@@ -9,8 +9,9 @@
 (def client (d/client cfg))
 
 (def conn (d/connect client {:db-name "charizard-project"}))
-						
-						
+
+(def db (d/db conn))
+
 (d/transact conn
     {:tx-data
      [{
@@ -28,6 +29,10 @@
        :db/valueType :db.type/long
        :db/unique :db.unique/identity
        :db/cardinality :db.cardinality/one}]})
+
+(def all-titles-q '[:find ?pokemon-name
+                    :where [_ :pokemon/name ?pokemon-name]])
+
 						
 (def result (d/transact conn {:tx-data [[:db/add "4" :pokemon/name "charmander"
                                                      :pokemon/type "fire"
@@ -39,3 +44,5 @@
                                          :pokemon/generation 1}]}))
 										 
 (-> result :tempids (get "4"))
+
+(d/q all-titles-q db)
