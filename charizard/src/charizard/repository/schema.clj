@@ -17,5 +17,5 @@
                  {:db/ident :user/email
                   :db/valueType :db.type/string
                   :db/cardinality :db.cardinality/one
-                  :db/doc "MailAddress"}
+                  :db/doc "EmailAddress"}
                  ])
