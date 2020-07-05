@@ -1,18 +1,23 @@
 (ns charizard.repository.clojure
   (:require [datomic.client.api :as d])
-)
+  (:require [charizard.repository.schema])
+  (:gen-class)
+  )
 
 (def cfg {:server-type :peer-server
           :access-key "myaccesskey"
           :secret "mysecret"
           :endpoint "localhost:8998"
           :validate-hostnames false})
+;; => #'charizard.repository.clojure/cfg
+
 
 (def client (d/client cfg))
 
 (def conn (d/connect client {:db-name "charizard-db"}))
 
-(def db (d/db conn)) 
+(def database (d/db conn))
+
 
 
 
@@ -21,3 +26,4 @@
   (d/transact conn  {:tx-data entities})
   )
   
+(def init (transact charizard.repository.schema/userSchema))

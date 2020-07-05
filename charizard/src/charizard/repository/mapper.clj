@@ -5,8 +5,8 @@
 (defmulti toEntity class)
 
 (defmethod toEntity charizard.domain.user.UserEntity
-  [entity] {:user/id (:id entity)
-            :user/name (:name entity)
-            :user/lastname (:lastname entity)
-            :user/email (:email entity)})
+  [entity] [{:user/id (:id entity)
+             :user/name (:name entity)
+             :user/lastname (:lastname entity)
+             :user/email (:email entity)}])
 

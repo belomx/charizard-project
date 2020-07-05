@@ -2,7 +2,7 @@
   (:require [datomic.client.api :as d]))
 
 (def userSchema [{:db/ident :user/id
-                  :db/valueType :db.type/int
+                  :db/valueType :db.type/bigint
                   :db/cardinality :db.cardinality/one
                   :db/doc "User Identifier"
                   }
