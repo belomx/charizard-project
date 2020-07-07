@@ -16,6 +16,8 @@
 
 (def conn (d/connect client {:db-name "charizard-db"}))
 
+
+
 (def database (d/db conn))
 
 
@@ -23,7 +25,10 @@
 
 (defn transact
  [entities]
+ 
   (d/transact conn  {:tx-data entities})
   )
   
 (def init (transact charizard.repository.schema/userSchema))
+
+(defn query [criteria] (d/q criteria database))
