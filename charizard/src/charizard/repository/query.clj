@@ -11,14 +11,15 @@
                         [?e :user/email ?email]
                         ])
   
-  (user-domain/find-by-fulllname [this name lastname] '[:find ?id ?name ?lastname ?email
+  (user-domain/find-by-fulllname [this] '[:find ?id ?name ?lastname ?email
                                              :where [?e :user/id ?id]
                                              [?e :user/name (:name this)]
                                              [?e :user/lastname (:lastname this)]
                                              [?e :user/email ?email]])
   
-  (user-domain/find-by-email [this email] '[:find ?id ?name ?lastname ?email
+  (user-domain/find-by-email [this] '[:find ?id ?name ?lastname ?email
                                  :where [?e :user/id ?id]
                                  [?e :user/name ?name]
                                  [?e :user/lastname ?lastname]
-                                 [?e :user/email (:email this)]]))
+                                 [?e :user/email (:email this)]])
+  )

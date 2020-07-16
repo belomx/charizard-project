@@ -7,6 +7,7 @@
   (:require [charizard.repository.clojure])
   (:gen-class))
 
+
 (def start 
   (do charizard.repository.clojure/init 
       (-> (user/->UserEntity (bigint 3) "Rodrigo" "Fudissaku" "mari@gmail.com")

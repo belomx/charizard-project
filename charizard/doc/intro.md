@@ -15,6 +15,12 @@ chmod +rwx classpath
 chmod +rwx run
 
 cd ..
+
+# run transactor
+setup license 
+ https://docs.datomic.com/on-prem/dev-setup.html
+
+
 # Install datomic
 sudo bin/run -m datomic.peer-server -h localhost -p 8998 -a myaccesskey,mysecret -d charizard-db,datomic:mem://charizard-db
 
@@ -25,9 +31,6 @@ sudo bin/run -m datomic.peer-server -h localhost -p 8998 -a myaccesskey,mysecret
 sudo chmod +rwx bin/console
 bin/console -p 8080 dev datomic:dev://localhost:4334/
 
-# run transactor
-setup license 
- https://docs.datomic.com/on-prem/dev-setup.html
 
 bin/transactor config/samples/dev-transactor-template.properties
 
