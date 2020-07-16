@@ -7,16 +7,19 @@
   (:require [charizard.repository.clojure])
   (:gen-class))
 
-
-(def start 
+ (def start 
   (do charizard.repository.clojure/init 
       (-> (user/->UserEntity (bigint 3) "Rodrigo" "Fudissaku" "mari@gmail.com")
           charizard.repository.mapper/toEntity
           charizard.repository.clojure/transact)) 
-  )
+ )
+ ;; => #'charizard.core/start
+
 
 (def query
-  (charizard.repository.clojure/query (user/find-id (charizard.repository.query/->User "Rodrigo")))
+  (charizard.repository.clojure/query 
+   (user/find-id 
+    (charizard.repository.query/map->User {:id (bigint 3) :name "Rodrigo"})))
   
   )
 

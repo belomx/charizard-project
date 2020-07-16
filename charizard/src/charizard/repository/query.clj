@@ -4,7 +4,7 @@
 
 (defrecord User [id name lastname email] 
   charizard.domain.user/Repository
-  (user-domain/find-id [this] '[:find ?id ?name ?lastname ?email
+  (user-domain/find-id [this] '[:find  ?name ?lastname ?email
                         :where [?e :user/id (:id this)]
                         [?e :user/name ?name]
                         [?e :user/lastname ?lastname]
