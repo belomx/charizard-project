@@ -17,9 +17,18 @@
                                              [?e :user/lastname (:lastname this)]
                                              [?e :user/email ?email]])
   
-  (user-domain/find-by-email [this] '[:find ?id ?name ?lastname ?email
+  (user-domain/find-by-email [this] '[:find ?id ?name ?lastname
                                  :where [?e :user/id ?id]
                                  [?e :user/name ?name]
                                  [?e :user/lastname ?lastname]
                                  [?e :user/email (:email this)]])
   )
+
+;; Remover depois 
+(def getstreet '[:find ?id ?name ?lastname ?email ?street
+                 :where [?e :user/id ?id]
+                 [?e :user/name ?name]
+                 [?e :user/lastname ?lastname]
+                 [?e :user/email ?email]
+                 [?e :user/address ?address]
+                 [?address :address/street ?street]])
