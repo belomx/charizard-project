@@ -20,6 +20,7 @@ cd ..
 setup license 
  https://docs.datomic.com/on-prem/dev-setup.html
 
+bin/transactor config/samples/dev-transactor-template.properties
 
 # Install datomic
 sudo bin/run -m datomic.peer-server -h localhost -p 8998 -a myaccesskey,mysecret -d charizard-db,datomic:mem://charizard-db
@@ -32,7 +33,6 @@ sudo chmod +rwx bin/console
 bin/console -p 8080 dev datomic:dev://localhost:4334/
 
 
-bin/transactor config/samples/dev-transactor-template.properties
 
 #run console
 bin/console -p 8080 charizard datomic:dev://localhost:4334/

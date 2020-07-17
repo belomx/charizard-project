@@ -1,8 +1,9 @@
 (ns charizard.domain.user
 (:require [datomic.client.api :as d]) )
 
+(defrecord UserAddress [id street zipcode])
 
-(defrecord UserEntity [id name lastname email])
+(defrecord UserEntity [id name lastname email address])
 
 (defprotocol Repository
   "Protocol for query Users"

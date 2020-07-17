@@ -29,6 +29,9 @@
   (d/transact conn  {:tx-data entities})
   )
   
-(def init (transact charizard.repository.schema/userSchema))
+(def init  (do (transact charizard.repository.schema/userSchema) 
+               (transact charizard.repository.schema/addressSchema)
+               )
+)
 
 (defn query [criteria] (d/q criteria database))
